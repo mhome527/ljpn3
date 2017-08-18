@@ -13,23 +13,23 @@ public class GrammarPresenter extends BasePresenter<GrammarActivity> {
         super(activity);
     }
 
-    public void loadData(final int level, ICallback callback) {
+    public void loadData(ICallback callback) {
         loadData(callback, new ILoadData() {
                     @Override
                     public Object onBackground() {
                         GrammarDao dao = new GrammarDao(activity);
-                        return dao.getListData(level);
+                        return dao.getListData();
                     }
                 }
         );
 
     }
 
-    public void loadItem(final int level, final int num, ICallback callback) {
+    public void loadItem(final int num, ICallback callback) {
         loadData(callback, new ILoadData() {
             @Override
             public Object onBackground() {
-                return GrammarDao.getItemData(activity, level, num);
+                return GrammarDao.getItemData(activity, num);
             }
         });
     }

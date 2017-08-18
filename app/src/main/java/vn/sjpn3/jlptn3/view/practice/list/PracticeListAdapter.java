@@ -15,7 +15,6 @@ import vn.sjpn3.jlptn3.view.BaseAdapterView;
 public class PracticeListAdapter extends BaseAdapterView<PracticeListHolder> {
 
     List<PracticeEntity> items;
-    boolean isPurchased = false;
 
     public PracticeListAdapter(List<PracticeEntity> items) {
         this.items = items;
@@ -58,10 +57,8 @@ public class PracticeListAdapter extends BaseAdapterView<PracticeListHolder> {
 
     @Override
     public void onViewHolder(PracticeListHolder holder, int position) {
-        holder.bind(items.get(position), isPurchased);
+        holder.bind(items.get(position));
     }
 
-    public void setPurchased(boolean isPurchased) {
-        this.isPurchased = isPurchased;
-    }
+
 }

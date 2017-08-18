@@ -65,7 +65,7 @@ public class PracticeReadingActivity extends BaseActivity<PracticeReadingActivit
 
     @Override
     protected void initView() {
-        int level = getIntent().getIntExtra(Constant.INTENT_LEVEL, 0);
+//        int level = getIntent().getIntExtra(Constant.INTENT_LEVEL, 0);
         idRef = getIntent().getIntExtra(Constant.INTENT_DETAIL_NUM, 0);
         num = getIntent().getIntExtra(Constant.INTENT_NUM, 0);
         bookmark = getIntent().getIntExtra(Constant.INTENT_BOOKMARK, 0);
@@ -89,7 +89,7 @@ public class PracticeReadingActivity extends BaseActivity<PracticeReadingActivit
         tvNum.setText(num + "");
 
         Common.setupRecyclerView(activity, recyclerView, null);
-        presenter = new PracticeReadingPresenter(activity, level, idRef);
+        presenter = new PracticeReadingPresenter(activity, idRef);
         presenter.load(this);
 
         setBookmark();

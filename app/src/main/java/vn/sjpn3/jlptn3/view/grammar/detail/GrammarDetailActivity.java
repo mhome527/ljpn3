@@ -48,13 +48,13 @@ public class GrammarDetailActivity extends BaseActivity<GrammarDetailActivity> {
 
         setupView();
 
-        int level = getIntent().getIntExtra(Constant.INTENT_DETAIL_LEVEL, 0);
+//        int level = getIntent().getIntExtra(Constant.INTENT_DETAIL_LEVEL, 0);
         int num = getIntent().getIntExtra(Constant.INTENT_DETAIL_NUM, 0);
 
-        setTitle("N" + level);
+        setTitle("N" + Constant.LEVEL);
 
         GrammarDetailPresenter presenter = new GrammarDetailPresenter(activity);
-        presenter.loadItem(level, num, new ICallback<GrammarEntity>() {
+        presenter.loadItem( num, new ICallback<GrammarEntity>() {
             @Override
             public void onCallback(final GrammarEntity data) {
                 activity.runOnUiThread(new Runnable() {

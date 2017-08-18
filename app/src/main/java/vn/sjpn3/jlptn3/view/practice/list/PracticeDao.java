@@ -5,6 +5,7 @@ import android.database.Cursor;
 
 import java.util.List;
 
+import vn.sjpn3.jlptn3.Constant;
 import vn.sjpn3.jlptn3.db.table.PracticeTable;
 import vn.sjpn3.jlptn3.entity.PracticeEntity;
 import vn.sjpn3.jlptn3.view.practice.BasePracticeDao;
@@ -30,9 +31,9 @@ public class PracticeDao extends BasePracticeDao {
     }
 
 
-    public PracticeDao(Context context, int level, int kind) {
+    public PracticeDao(Context context, int kind) {
         super(context);
-        this.level = level;
+        this.level = Constant.LEVEL;
         this.kind = kind;
     }
 
@@ -82,7 +83,8 @@ public class PracticeDao extends BasePracticeDao {
 
         String sql = "Select * From " + getTableName()
                 + " where " + where + " "
-                + sort;
+                + sort
+                + " limit 80";
 
         return fetchAll(sql);
     }

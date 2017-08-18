@@ -19,12 +19,12 @@ public class PracticeListPresenter extends BasePresenter<BaseActivity> {
 
     int level, kind;
 
-    public PracticeListPresenter(BaseActivity activity, int level, int kind) {
+    public PracticeListPresenter(BaseActivity activity, int kind) {
         super(activity);
         this.activity = activity;
-        this.level = level;
+        this.level = Constant.LEVEL;
         this.kind = kind;
-        dao = new PracticeDao(activity, level, kind);
+        dao = new PracticeDao(activity, kind);
     }
 
     public String getTitle(int v1, int v2) {

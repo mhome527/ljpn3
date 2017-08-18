@@ -16,12 +16,12 @@ public class GrammarDetailPresenter extends BasePresenter<GrammarDetailActivity>
     }
 
 
-    public void loadItem(final int level, final int num, ICallback<GrammarEntity> callback) {
+    public void loadItem(final int num, ICallback<GrammarEntity> callback) {
         loadData(callback, new ILoadData() {
             @Override
             public Object onBackground() {
                 try {
-                    GrammarEntity grammarEntity = GrammarDao.getItemData(activity, level, num);
+                    GrammarEntity grammarEntity = GrammarDao.getItemData(activity, num);
                     grammarEntity.formatData();
                     return grammarEntity;
                 } catch (Exception e) {

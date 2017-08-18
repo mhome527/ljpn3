@@ -14,11 +14,10 @@ public class PracticeReadingPresenter extends BasePresenter<PracticeReadingActiv
 
     PracticeReadingDao dao;
 
-    public PracticeReadingPresenter(PracticeReadingActivity activity, int level, int idRef) {
+    public PracticeReadingPresenter(PracticeReadingActivity activity, int idRef) {
         super(activity);
-        this.level = level;
         this.idRef = idRef;
-        dao = new PracticeReadingDao(activity, level);
+        dao = new PracticeReadingDao(activity);
     }
 
     public void load(ICallback iCallback) {

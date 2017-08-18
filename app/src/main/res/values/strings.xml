@@ -8,12 +8,14 @@
     <string name="cancel">Cancel</string>
     <string name="close">Close</string>
 
-    <string name="title_n_grammar">Grammar %1$d/%2$d</string>
-    <string name="title_n_reading">Reading %1$d/%2$d</string>
-    <string name="title_n_vocabulary">Vocabulary %1$d/%2$d</string>
-    <string name="title_n_listening">Listening %1$d/%2$d</string>
-    <string name="title_n_kanji">Kanji %1$d/%2$d</string>
+    <string name="title_n_grammar">Grammar</string>
+    <string name="title_n_reading">Reading</string>
+    <string name="title_n_vocabulary">Vocabulary</string>
+    <string name="title_n_listening">Listening</string>
+    <string name="title_n_kanji">Kanji</string>
+
     <string name="title_kanji">漢字</string>
+    <string name="title_grammar">Grammar</string>
 
     <string name="menu_search">search</string>
     <string name="menu_search_hint">ひらがな, Romaji, Mean</string>

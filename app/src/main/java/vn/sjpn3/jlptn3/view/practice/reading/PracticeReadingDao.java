@@ -5,6 +5,7 @@ import android.database.Cursor;
 
 import java.util.List;
 
+import vn.sjpn3.jlptn3.Constant;
 import vn.sjpn3.jlptn3.db.table.PracticeTable;
 import vn.sjpn3.jlptn3.entity.PracticeEntity;
 import vn.sjpn3.jlptn3.view.practice.BasePracticeDao;
@@ -27,9 +28,9 @@ public class PracticeReadingDao extends BasePracticeDao {
         return PracticeTable.TYPE_READING;
     }
 
-    public PracticeReadingDao(Context context, int level) {
+    public PracticeReadingDao(Context context) {
         super(context);
-        this.level = level;
+        this.level = Constant.LEVEL;
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.database.Cursor;
 
 import java.util.List;
 
+import vn.sjpn3.jlptn3.Constant;
 import vn.sjpn3.jlptn3.db.table.PracticeTable;
 import vn.sjpn3.jlptn3.entity.PracticeEntity;
 import vn.sjpn3.jlptn3.view.practice.BasePracticeDao;
@@ -15,11 +16,9 @@ import vn.sjpn3.jlptn3.view.practice.BasePracticeDao;
 
 public class PracticeKanJiDao extends BasePracticeDao {
 
-    int level;
-
     @Override
     protected int getLevel() {
-        return level;
+        return Constant.LEVEL;
     }
 
     @Override
@@ -27,9 +26,8 @@ public class PracticeKanJiDao extends BasePracticeDao {
         return PracticeTable.TYPE_KANJI;
     }
 
-    public PracticeKanJiDao(Context context, int level) {
+    public PracticeKanJiDao(Context context) {
         super(context);
-        this.level = level;
     }
 
     @Override

@@ -53,15 +53,12 @@ public class PracticeBookmarkActivity extends BaseActivity<PracticeBookmarkActiv
     protected void initView() {
         Common.setupRecyclerView(activity, recyclerView, this);
         kind = getIntent().getIntExtra(Constant.INTENT_KIND, PracticeTable.TYPE_GRAMMAR);
-        level = getIntent().getIntExtra(Constant.INTENT_LEVEL, PracticeTable.LEVEL_N5);
 
         v1 = getIntent().getIntExtra(Constant.INTENT_V1, 0);
         v2 = getIntent().getIntExtra(Constant.INTENT_V2, 0);
+        level = Constant.LEVEL;
 
-        if (level == PracticeTable.LEVEL_N5) // N5 is free
-            isPurchased = true;
-
-        presenter = new PracticeListPresenter(this, level, kind);
+        presenter = new PracticeListPresenter(this, kind);
         setTitleQ(v1, v2);
 
         if (!BuildConfig.DEBUG) {
@@ -178,10 +175,10 @@ public class PracticeBookmarkActivity extends BaseActivity<PracticeBookmarkActiv
                     Log.i(TAG, "data bookmark not found");
                     return;
                 }
+
                 items = data;
                 adapter = new PracticeListAdapter(data);
-                if (level == PracticeTable.LEVEL_N5)
-                    adapter.setPurchased(true);
+
                 recyclerView.setAdapter(adapter);
 
                 activity.runOnUiThread(new Runnable() {

@@ -40,7 +40,6 @@ public class PracticeListActivity extends BaseActivity<PracticeListActivity> imp
     List<PracticeEntity> items;
     PracticeListAdapter adapter;
     PracticeListPresenter presenter;
-    int level;
     int kind;
     boolean isSort = true;
     int v1;
@@ -56,13 +55,13 @@ public class PracticeListActivity extends BaseActivity<PracticeListActivity> imp
     protected void initView() {
         Common.setupRecyclerView(activity, recyclerView, this);
         kind = getIntent().getIntExtra(Constant.INTENT_KIND, PracticeTable.TYPE_GRAMMAR);
-        level = getIntent().getIntExtra(Constant.INTENT_LEVEL, PracticeTable.LEVEL_N5);
+//        level = getIntent().getIntExtra(Constant.INTENT_LEVEL, PracticeTable.LEVEL_N5);
 
         v1 = getIntent().getIntExtra(Constant.INTENT_V1, 0);
         v2 = getIntent().getIntExtra(Constant.INTENT_V2, 0);
 
 
-        presenter = new PracticeListPresenter(this, level, kind);
+        presenter = new PracticeListPresenter(this, kind);
         setTitleQ(v1, v2);
 
         ///////
@@ -70,15 +69,15 @@ public class PracticeListActivity extends BaseActivity<PracticeListActivity> imp
             Bundle params = new Bundle();
 
             if (kind == PracticeTable.TYPE_GRAMMAR)
-                params.putString("Practice", "GRAMMAR level: " + level);
+                params.putString("Practice", "GRAMMAR");
             else if (kind == PracticeTable.TYPE_READING)
-                params.putString("Practice", "READING level: " + level);
+                params.putString("Practice", "READING");
             else if (kind == PracticeTable.TYPE_LISTENING)
-                params.putString("Practice", "LISTENING level: " + level);
+                params.putString("Practice", "LISTENING");
             else if (kind == PracticeTable.TYPE_KANJI)
-                params.putString("Practice", "KANJI level: " + level);
+                params.putString("Practice", "KANJI");
             else
-                params.putString("Practice", "VOCABULARY level: " + level);
+                params.putString("Practice", "VOCABULARY");
 
             mFirebaseAnalytics.logEvent("SCREEN", params);
         }
@@ -114,7 +113,6 @@ public class PracticeListActivity extends BaseActivity<PracticeListActivity> imp
                 presenter.putPosHistory(recyclerView.computeVerticalScrollOffset());
                 Intent i = new Intent(activity, PracticeBookmarkActivity.class);
                 i.putExtra(Constant.INTENT_KIND, kind);
-                i.putExtra(Constant.INTENT_LEVEL, level);
                 i.putExtra(Constant.INTENT_V1, v1);
                 i.putExtra(Constant.INTENT_V2, v2);
                 startActivity(i);
@@ -141,7 +139,6 @@ public class PracticeListActivity extends BaseActivity<PracticeListActivity> imp
             presenter.putPosHistory(recyclerView.computeVerticalScrollOffset());
 //            setPositionScroll2();
             Intent i = new Intent(activity, PracticeReadingActivity.class);
-            i.putExtra(Constant.INTENT_LEVEL, level);
             i.putExtra(Constant.INTENT_NUM, item.getNum());
             i.putExtra(Constant.INTENT_BOOKMARK, item.getBookmarks());
             i.putExtra(Constant.INTENT_DETAIL_NUM, item.getNumId());
@@ -155,7 +152,6 @@ public class PracticeListActivity extends BaseActivity<PracticeListActivity> imp
                     && item.getNumId() > 200) { //truong hop ngoai le la kanji co man hinh rieng
                 presenter.putPosHistory(recyclerView.computeVerticalScrollOffset());
                 Intent i = new Intent(activity, PracticeKanJiActivity.class);
-                i.putExtra(Constant.INTENT_LEVEL, level);
                 i.putExtra(Constant.INTENT_NUM, item.getNum());
                 i.putExtra(Constant.INTENT_BOOKMARK, item.getBookmarks());
                 i.putExtra(Constant.INTENT_DETAIL_NUM, item.getNumId());
@@ -165,9 +161,6 @@ public class PracticeListActivity extends BaseActivity<PracticeListActivity> imp
 
                 startActivity(i);
             } else {
-
-                if (level == PracticeTable.LEVEL_N5)
-                    isPurchased = true;
 
                 PracticeDialog dialog = new PracticeDialog(activity, position, items, iPracticeInterface);
                 dialog.show();
@@ -210,10 +203,6 @@ public class PracticeListActivity extends BaseActivity<PracticeListActivity> imp
             public void onCallback(List<PracticeEntity> data) {
                 items = data;
                 adapter = new PracticeListAdapter(data);
-                if (level == PracticeTable.LEVEL_N5)
-                    adapter.setPurchased(true);
-                else
-                    adapter.setPurchased(isPurchased);
 
                 recyclerView.setAdapter(adapter);
                 activity.runOnUiThread(new Runnable() {
@@ -233,7 +222,6 @@ public class PracticeListActivity extends BaseActivity<PracticeListActivity> imp
                     @Override
                     public void run() {
                         recyclerView.scrollBy(0, mTotalScrolled);
-
                     }
                 }, 20);
             }

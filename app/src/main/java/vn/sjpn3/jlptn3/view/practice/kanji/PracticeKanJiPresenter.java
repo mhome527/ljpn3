@@ -15,11 +15,10 @@ public class PracticeKanJiPresenter extends BasePresenter<PracticeKanJiActivity>
 
     PracticeKanJiDao dao;
 
-    public PracticeKanJiPresenter(PracticeKanJiActivity activity, int level, int idRef) {
+    public PracticeKanJiPresenter(PracticeKanJiActivity activity, int idRef) {
         super(activity);
-        this.level = level;
         this.idRef = idRef;
-        dao = new PracticeKanJiDao(activity, level);
+        dao = new PracticeKanJiDao(activity);
     }
 
     public void load(ICallback iCallback) {

@@ -12,9 +12,9 @@ public class PracticePresenter extends BasePresenter<BaseActivity> {
 
     PracticeDao dao;
 
-    public PracticePresenter(BaseActivity activity, int level, int kind) {
+    public PracticePresenter(BaseActivity activity, int kind) {
         super(activity);
-        dao = new PracticeDao(activity, level, kind);
+        dao = new PracticeDao(activity, kind);
     }
 
     public int countAll(int kind) {

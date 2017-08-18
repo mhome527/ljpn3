@@ -15,7 +15,6 @@ import vn.sjpn3.jlptn3.view.BaseActivity;
 import vn.sjpn3.jlptn3.view.grammar.GrammarActivity;
 import vn.sjpn3.jlptn3.view.kanji.KanjiActivity;
 import vn.sjpn3.jlptn3.view.practice.list.PracticeListActivity;
-import vn.sjpn3.jlptn3.view.test.AndroidDatabaseManager;
 
 import static vn.sjpn3.jlptn3.BaseApplication.mFirebaseAnalytics;
 
@@ -32,7 +31,6 @@ public class DashboardActivity extends BaseActivity<DashboardActivity> {
     @Override
     protected void initView() {
         Log.i(TAG, "initView text: " + Constant.MY_TEXT);
-
 
     }
 
@@ -59,6 +57,14 @@ public class DashboardActivity extends BaseActivity<DashboardActivity> {
     @OnClick(R.id.btnKanji)
     public void actionKanji() {
         startActivity2(KanjiActivity.class);
+
+        if (!BuildConfig.DEBUG) {
+            // [START custom_event]
+            Bundle params = new Bundle();
+            params.putString("Name", "Kanji");
+//                    params.putString("Language", );
+            mFirebaseAnalytics.logEvent("SCREEN", params);
+        }
     }
 
     @OnClick(R.id.btnTestGrammar)
@@ -66,6 +72,14 @@ public class DashboardActivity extends BaseActivity<DashboardActivity> {
         Intent i = new Intent(activity, PracticeListActivity.class);
         i.putExtra(Constant.INTENT_KIND, PracticeTable.TYPE_GRAMMAR);
         startActivity(i);
+
+        if (!BuildConfig.DEBUG) {
+            // [START custom_event]
+            Bundle params = new Bundle();
+            params.putString("Name", "TestGrammar");
+//                    params.putString("Language", );
+            mFirebaseAnalytics.logEvent("SCREEN", params);
+        }
     }
 
     @OnClick(R.id.btnTestReading)
@@ -73,6 +87,14 @@ public class DashboardActivity extends BaseActivity<DashboardActivity> {
         Intent i = new Intent(activity, PracticeListActivity.class);
         i.putExtra(Constant.INTENT_KIND, PracticeTable.TYPE_READING);
         startActivity(i);
+
+        if (!BuildConfig.DEBUG) {
+            // [START custom_event]
+            Bundle params = new Bundle();
+            params.putString("Name", "TestReading");
+//                    params.putString("Language", );
+            mFirebaseAnalytics.logEvent("SCREEN", params);
+        }
     }
 
     @OnClick(R.id.btnTestVocabulary)
@@ -80,6 +102,14 @@ public class DashboardActivity extends BaseActivity<DashboardActivity> {
         Intent i = new Intent(activity, PracticeListActivity.class);
         i.putExtra(Constant.INTENT_KIND, PracticeTable.TYPE_VOCABULARY);
         startActivity(i);
+
+        if (!BuildConfig.DEBUG) {
+            // [START custom_event]
+            Bundle params = new Bundle();
+            params.putString("Name", "TestVocabulary");
+//                    params.putString("Language", );
+            mFirebaseAnalytics.logEvent("SCREEN", params);
+        }
     }
 
     @OnClick(R.id.btnTestKanji)
@@ -87,15 +117,27 @@ public class DashboardActivity extends BaseActivity<DashboardActivity> {
         Intent i = new Intent(activity, PracticeListActivity.class);
         i.putExtra(Constant.INTENT_KIND, PracticeTable.TYPE_KANJI);
         startActivity(i);
+
+        if (!BuildConfig.DEBUG) {
+            // [START custom_event]
+            Bundle params = new Bundle();
+            params.putString("Name", "TestKanji");
+//                    params.putString("Language", );
+            mFirebaseAnalytics.logEvent("SCREEN", params);
+        }
     }
 
     @OnClick(R.id.llOtherApp)
     public void actionOtherApp() {
-        if (BuildConfig.DEBUG) {
-            Intent i = new Intent(activity, AndroidDatabaseManager.class);
-            startActivity(i);
-        } else
-            Utility.installVnApp(activity);
+//        if (BuildConfig.DEBUG) {
+//            Intent i = new Intent(activity, AndroidDatabaseManager.class);
+//            startActivity(i);
+//        } else
+        Utility.installVnApp(activity);
+        Bundle params = new Bundle();
+        params.putString("Name", "APP_FULL");
+        mFirebaseAnalytics.logEvent("SCREEN", params);
+
     }
 
 

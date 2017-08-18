@@ -36,7 +36,6 @@ public class GrammarSearchActivity extends BaseActivity<GrammarSearchActivity> i
     GrammarSearchAdapter adapter;
 
     GrammarSearchPresenter presenter;
-    int level = 5;
 
     @Override
     protected int getLayout() {

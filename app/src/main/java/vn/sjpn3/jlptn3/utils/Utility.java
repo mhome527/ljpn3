@@ -174,7 +174,7 @@ public class Utility {
                             // if something going wrong doing nothing
                         }
                     }
-                }).setIcon(R.drawable.ic_lvn).setNegativeButton(context.getString(R.string.cancel), null).create();
+                }).setIcon(R.mipmap.ic_launcher).setNegativeButton(context.getString(R.string.cancel), null).create();
 
         dialog.show();
     }
