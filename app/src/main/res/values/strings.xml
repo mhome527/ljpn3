@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">JlptN3</string>
+    <string name="msg_title_vn">Learn Japanese App</string>
+    <string name="msg_content_vn">Do you want to install this application?</string>
+    <string name="msg_title_update">Update</string>
+    <string name="install">Install</string>
+    <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+
+    <string name="title_n_grammar">Grammar %1$d/%2$d</string>
+    <string name="title_n_reading">Reading %1$d/%2$d</string>
+    <string name="title_n_vocabulary">Vocabulary %1$d/%2$d</string>
+    <string name="title_n_listening">Listening %1$d/%2$d</string>
+    <string name="title_n_kanji">Kanji %1$d/%2$d</string>
+    <string name="title_kanji">漢字</string>
+
+    <string name="menu_search">search</string>
+    <string name="menu_search_hint">ひらがな, Romaji, Mean</string>
+
+    <string name="title_learn">Study</string>
+    <string name="title_jlpt">Jlpt Test</string>
+    <string name="title_N1">N1</string>
+    <string name="title_N2">N2</string>
+    <string name="title_N3">N3</string>
+    <string name="title_N4">N4</string>
+    <string name="title_N5">N5</string>
+
+    <string name="title_lvn">Japanese and JLPT (N5, N4, N3, N2, N1)</string>
+
+</resources>

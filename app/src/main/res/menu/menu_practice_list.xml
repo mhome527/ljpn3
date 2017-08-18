@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menuSort"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/title_n_grammar"
+        app:showAsAction="collapseActionView|ifRoom" />
+
+    <item
+        android:id="@+id/menuBookmark"
+        android:icon="@drawable/ic_heart_white"
+        android:title="@string/title_n_grammar"
+        app:showAsAction="collapseActionView|ifRoom" />
+
+</menu>
